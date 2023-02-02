@@ -9,7 +9,7 @@
     <h1 class="text-center bg-dark text-white p-2 mt-3">Détail  article</h1>
     <article class="articles mb-3">
         <h3> {{article.title}} </h3>
-        <em>(Créé le {{article.createdAt| date('d/m/y')}} dans la catégorie TRUC)</em>
+        <em>(Créé le {{article.createdAt| date('d/m/y')}} dans la catégorie {{article.category.name}})</em>
         <div>
             <img src="{{article.picture}}"alt="">
             <p> {{article.content}}</p>     

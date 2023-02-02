@@ -11,7 +11,7 @@
         {% for art in articles %}
             <article class="articles mb-3">
                 <h3> {{art.title}} </h3>
-                <em>(Créé le {{art.createdAt| date('d/m/y')}} dans la catégorie TRUC)</em>
+                <em>(Créé le {{art.createdAt| date('d/m/y')}} dans la catégorie {{art.category.name}})</em>
                 <div>
                     <img src="{{art.picture}}" alt="">
                     <a class="btn btn-primary"href="{{path('blog_detail_art',{id:art.id})}}">Voir la suite...</a>
