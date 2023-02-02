@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    <h3>symBlog:Detail article</h3>   
+{% endblock %}
+
+{% block body %}
+
+    <h1 class="text-center bg-dark text-white p-2 mt-3">Détail  article</h1>
+    <article class="articles mb-3">
+        <h3> {{article.title}} </h3>
+        <em>(Créé le {{article.createdAt| date('d/m/y')}} dans la catégorie TRUC)</em>
+        <div>
+            <img src="{{article.picture}}"alt="">
+            <p> {{article.content}}</p>     
+        </div>
+    </article>
+    <div>
+        <a class="btn btn-dark" href="{{path('blog_index')}}">retour aux articles</a>
+    </div>
+{% endblock %}
