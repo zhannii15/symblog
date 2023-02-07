@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use Faker\Factory;
 use DatetimeImmutable;
+use App\Entity\Comment;
 use App\Entity\Articles;
 use App\Entity\Categorie;
 use Doctrine\Persistence\ObjectManager;
@@ -32,6 +33,15 @@ class Blogfixture extends Fixture
                 $art->setCategory($cat);
                 // persisté cet article
                 $manager->persist($art);
+                for ($k=0;$k<mt_rand(1,6);$k++){
+                    $comment= new Comment();
+                    $comment->setAuthor($faker->name());
+                    $comment->setCreatedAt(new DatetimeImmutable());
+                    $comment->setArticle($art);
+                    $comment->setContent($faker->paragraph());
+                    $manager->persist($comment);
+
+                }
             }
         }
         // Ecriture dans la BDD

@@ -16,6 +16,38 @@
         </div>
     </article>
     <div>
+        <a class="btn btn-outline-warning" href="#">Modifier</a>
         <a class="btn btn-dark" href="{{path('blog_index')}}">retour aux articles</a>
+    </div>
+    <div>
+        <h2>Commentaires</h2>
+        {% if article.comments is not empty %}
+            {% set comments = article.comments %}
+            {% for com in comments %}
+                <div class ="row mb-3">
+                    <div class="col-3">
+                        {{com.author}}
+                        <em>{{com.createdAt|date('d/m/y')}}</em>
+                    </div>
+                    <div class="col">
+                        {{com.content}}
+                    </div>    
+                </div>
+            {% endfor %}
+        {% else %}
+            <h4>Pas de commentaire</h4>
+        {% endif %}
+    </div>
+    <div>
+        <p>Laissez un avis</p>
+        {% if not app.user %}
+            <a href="{{path('app_login')}}"> se connecter</a>
+        {% else %}
+            {{form_start(formCom)}}
+            {{ form_row(formCom.author) }}
+            {{ form_row(formCom.content) }}
+            <button type="submit">Envoyer</button>
+            {{ form_end(formCom) }}
+        {% endif %}
     </div>
 {% endblock %}
